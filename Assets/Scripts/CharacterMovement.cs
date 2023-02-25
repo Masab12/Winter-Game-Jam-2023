@@ -5,9 +5,10 @@ public class CharacterMovement : MonoBehaviour
     public float moveSpeed = 2.0f;
     public float jumpForce = 10.0f;
     public bl_Joystick joystick;
-    public Rigidbody rigidbody;
-    private bool isGrounded = false;
+    public Rigidbody rb;
+    private bool isGrounded = true;
     public Animator animator;
+    public static bool isMoving;
 
     void Start()
     {
@@ -19,37 +20,45 @@ public class CharacterMovement : MonoBehaviour
         float moveX = joystick.Vertical;
         float moveZ = joystick.Horizontal;
 
-        if (isGrounded && joystick.Horizontal > 0.5f)
-        {
-            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isGrounded = false;
-        }
+        
 
-        Vector3 movement = new Vector3(moveX, 0f, moveZ);
+        Vector3 movement = new Vector3(0f, 0f, moveZ);
         if (movement.magnitude > 1f) movement = movement.normalized; 
 
         Vector3 moveDirection = Vector3.zero;
         if (movement.magnitude > 0f)
         {
-            
-            transform.rotation = Quaternion.LookRotation(movement, Vector3.up);
-
+            transform.rotation = Quaternion.LookRotation(-movement, Vector3.up);
             moveDirection = movement;
+            isMoving = true;
         }
+        else
+        {
+            isMoving = false;
+        }      
 
-        rigidbody.velocity = moveDirection * moveSpeed;
+        rb.velocity = moveDirection * (-moveSpeed);
 
         if (moveDirection.magnitude > 0)
         {
             animator.SetBool("isWalking", true);
-            animator.SetFloat("walkingSpeed", moveDirection.z);
+            float temp = Mathf.Abs(moveDirection.z);
+            animator.SetFloat("walkingSpeed", temp);
         }
         else
         {
             animator.SetBool("isWalking", false);
         }
     }
-
+    public void Jump()
+    {
+        if (isGrounded)
+        {
+            Debug.Log("JUMPPPP");
+            rb.AddForce(Vector3.up * jumpForce * 12f, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Ground")
