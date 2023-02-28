@@ -70,10 +70,7 @@ public class CharacterMovement : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
 
-        if (joystick.Vertical > 0 && isGrounded)
-        {
-            Jump();
-        }
+        
     }
 
     void Jump()

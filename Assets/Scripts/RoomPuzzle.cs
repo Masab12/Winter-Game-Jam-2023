@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
 public class RoomPuzzle : MonoBehaviour
 {
     public Transform[] roomPositions;
@@ -34,7 +35,7 @@ public class RoomPuzzle : MonoBehaviour
         if (zoomedOutCamera.enabled) // Only allow puzzle to be moved when zoomedOutCamera is enabled
         {
             Joystick.SetActive(false);
-            
+
             if (EventSystem.current.IsPointerOverGameObject()) // Check if the mouse pointer is over a UI element
             {
                 return; // Ignore input if over UI
@@ -90,6 +91,27 @@ public class RoomPuzzle : MonoBehaviour
                 if (isSolved)
                 {
                     Debug.Log("Rooms Moving!");
+                    StartCoroutine(ShakeCamera());
+                }
+                IEnumerator ShakeCamera()
+                {
+                    float duration = 0.5f;
+                    float magnitude = 0.2f;
+
+                    Vector3 originalPosition = Camera.main.transform.position;
+
+                    float elapsed = 0.0f;
+                    while (elapsed < duration)
+                    {
+                        float x = Random.Range(-1f, 1f) * magnitude;
+                        float y = Random.Range(-1f, 1f) * magnitude;
+
+                        Camera.main.transform.position = new Vector3(originalPosition.x + x, originalPosition.y + y, originalPosition.z);
+
+                        elapsed += Time.deltaTime;
+
+                        yield return null;
+                    }
                 }
             }
         }
