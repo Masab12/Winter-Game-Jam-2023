@@ -79,7 +79,7 @@ public class CharacterMovement : MonoBehaviour
             toy = other.gameObject;
             toy.transform.parent = hand; // Set the parent of the toy to the character's hand
             toy.transform.localPosition = Vector3.zero; // Reset the position of the toy to the hand's position
-            animator.SetTrigger("pickupTrigger"); // Play the pickup animation
+            //animator.SetTrigger("pickupTrigger"); // Play the pickup animation
         }
     }
   

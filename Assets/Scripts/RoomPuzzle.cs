@@ -13,6 +13,7 @@ public class RoomPuzzle : MonoBehaviour
     public bool isDragging = false;
     public Vector3 dragStartPos;
     public Vector3 currentRoomOffset;
+    public GameObject Joystick;
 
     public Camera zoomedOutCamera;
 
@@ -29,8 +30,11 @@ public class RoomPuzzle : MonoBehaviour
 
     void Update()
     {
+        Joystick.SetActive(true);
         if (zoomedOutCamera.enabled) // Only allow puzzle to be moved when zoomedOutCamera is enabled
         {
+            Joystick.SetActive(false);
+            
             if (EventSystem.current.IsPointerOverGameObject()) // Check if the mouse pointer is over a UI element
             {
                 return; // Ignore input if over UI
