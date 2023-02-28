@@ -3,30 +3,44 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public float moveSpeed = 2.0f;
-    public float jumpForce = 10.0f;
+    public float jumpForce = 400.0f;
     public bl_Joystick joystick;
     public Rigidbody rb;
-    private bool isGrounded = true;
+    public bool isGrounded = true;
     public Animator animator;
     public static bool isMoving;
     public bool isTimeOver = false;
     public bool isHoldingToy = false;
     public Transform hand;
     public GameObject toy;
+    public float fakeGravity = 150f;
+    public float airGravityMultiplier = 1.2f; // The multiplier for fake gravity when in the air
+    private bool isInAir = false; // Whether the character is currently in the air
 
     void Start()
     {
+        rb.mass = 0.5f;
         animator = GetComponent<Animator>();
+        rb.useGravity = false;
+        rb.velocity = Vector3.zero;
+    }
+
+    void FixedUpdate()
+    {
+        if (isInAir)
+        {
+            rb.AddForce(-transform.up * fakeGravity * airGravityMultiplier, ForceMode.Acceleration);
+        }
+        else
+        {
+            rb.AddForce(-transform.up * fakeGravity, ForceMode.Acceleration);
+        }
     }
 
     void Update()
     {
-        //if (!isTimeOver) // check if the time is not over
-
         float moveX = joystick.Vertical;
         float moveZ = joystick.Horizontal;
-
-
 
         Vector3 movement = new Vector3(0f, 0f, moveZ);
         if (movement.magnitude > 1f) movement = movement.normalized;
@@ -55,21 +69,21 @@ public class CharacterMovement : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
-    }
 
-    public void Jump()
-    {
-        if (isGrounded)
+        if (joystick.Vertical > 0 && isGrounded)
         {
-            animator.SetTrigger("isJumping");
-            Invoke("ForceDelay", 0.5f);
+            Jump();
         }
     }
-    void ForceDelay()
+
+    void Jump()
     {
-        rb.AddForce(Vector3.up * jumpForce * 2, ForceMode.Impulse);
+        animator.SetTrigger("isJumping");
+        rb.AddForce(transform.up, ForceMode.Acceleration);
         isGrounded = false;
+        isInAir = true;
     }
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Ground")
@@ -79,12 +93,10 @@ public class CharacterMovement : MonoBehaviour
         if (other.gameObject.tag == "Toy")
         {
             isHoldingToy = true;
-            
+
             toy = other.gameObject;
-            toy.transform.parent = hand; // Set the parent of the toy to the character's hand
-            toy.transform.localPosition = Vector3.zero; // Reset the position of the toy to the hand's position
-            //animator.SetTrigger("pickupTrigger"); // Play the pickup animation
+            toy.transform.parent = hand;
+            toy.transform.localPosition = Vector3.zero;
         }
     }
-  
 }
