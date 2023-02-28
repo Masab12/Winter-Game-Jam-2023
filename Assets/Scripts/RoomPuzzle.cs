@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class RoomPuzzle : MonoBehaviour
 {
     public Transform[] roomPositions;
@@ -30,6 +31,10 @@ public class RoomPuzzle : MonoBehaviour
     {
         if (zoomedOutCamera.enabled) // Only allow puzzle to be moved when zoomedOutCamera is enabled
         {
+            if (EventSystem.current.IsPointerOverGameObject()) // Check if the mouse pointer is over a UI element
+            {
+                return; // Ignore input if over UI
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;

@@ -9,6 +9,10 @@ public class CharacterMovement : MonoBehaviour
     private bool isGrounded = true;
     public Animator animator;
     public static bool isMoving;
+    public bool isTimeOver = false;
+    public bool isHoldingToy = false;
+    public Transform hand;
+    public GameObject toy;
 
     void Start()
     {
@@ -17,13 +21,15 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+        //if (!isTimeOver) // check if the time is not over
+
         float moveX = joystick.Vertical;
         float moveZ = joystick.Horizontal;
 
-        
+
 
         Vector3 movement = new Vector3(0f, 0f, moveZ);
-        if (movement.magnitude > 1f) movement = movement.normalized; 
+        if (movement.magnitude > 1f) movement = movement.normalized;
 
         Vector3 moveDirection = Vector3.zero;
         if (movement.magnitude > 0f)
@@ -35,7 +41,7 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             isMoving = false;
-        }      
+        }
 
         rb.velocity = moveDirection * (-moveSpeed);
 
@@ -50,6 +56,7 @@ public class CharacterMovement : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
     }
+
     public void Jump()
     {
         if (isGrounded)
@@ -65,5 +72,15 @@ public class CharacterMovement : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (other.gameObject.tag == "Toy")
+        {
+            isHoldingToy = true;
+            
+            toy = other.gameObject;
+            toy.transform.parent = hand; // Set the parent of the toy to the character's hand
+            toy.transform.localPosition = Vector3.zero; // Reset the position of the toy to the hand's position
+            animator.SetTrigger("pickupTrigger"); // Play the pickup animation
+        }
     }
+  
 }
