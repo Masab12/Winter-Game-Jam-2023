@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         defaultPosition = zoomedInCamera.transform.position;
-        zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 7f, player.position.z + 1f);
+        zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 2f, player.position.z + 1f);
         zoomedOutCamera.enabled = false;
     }
 
@@ -22,15 +22,16 @@ public class CameraFollow : MonoBehaviour
     {
         if (!isZoomedOut)
         {
-            if (CharacterMovement.isMoving)
+            /*if (CharacterMovement.isMoving)
             {
-                zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 7f, player.position.z + 1f);
+                zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 2f, player.position.z + 1f);
             }
             else
             {
                 // Update the position of the camera to follow the new position of the character
-                zoomedInCamera.transform.position = new Vector3(player.position.x, player.position.y + 7f, player.position.z + 1f);
-            }
+               
+            }*/
+            zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 2f, player.position.z + 1f);
         }
     }
 
@@ -48,7 +49,7 @@ public class CameraFollow : MonoBehaviour
             zoomedInCamera.enabled = false;
             zoomedOutCamera.enabled = true;
             isZoomedOut = true;
-            zoomedInCamera.transform.position = player.position + new Vector3(0f, 7f, 1f);
+            zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 2f, player.position.z + 1f);
         }
     }
 }

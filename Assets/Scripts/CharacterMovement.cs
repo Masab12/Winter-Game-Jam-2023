@@ -61,10 +61,14 @@ public class CharacterMovement : MonoBehaviour
     {
         if (isGrounded)
         {
-            Debug.Log("JUMPPPP");
-            rb.AddForce(Vector3.up * jumpForce * 12f, ForceMode.Impulse);
-            isGrounded = false;
+            animator.SetTrigger("isJumping");
+            Invoke("ForceDelay", 0.5f);
         }
+    }
+    void ForceDelay()
+    {
+        rb.AddForce(Vector3.up * jumpForce * 2, ForceMode.Impulse);
+        isGrounded = false;
     }
     void OnCollisionEnter(Collision other)
     {
