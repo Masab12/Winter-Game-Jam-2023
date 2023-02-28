@@ -497,6 +497,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317932329}
   m_Mesh: {fileID: 8552134717624371188, guid: 64d1ded530101f64e83b4ecdefbd6719, type: 3}
+--- !u!1 &418972806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 165178, guid: 7973d81b61b491640b7a0d00c9de83d3, type: 3}
+  m_PrefabInstance: {fileID: 1929370215}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &529022127
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +540,7 @@ MonoBehaviour:
   isDragging: 0
   dragStartPos: {x: 0, y: 0, z: 0}
   currentRoomOffset: {x: 0, y: 0, z: 0}
+  Joystick: {fileID: 418972806}
   zoomedOutCamera: {fileID: 1108101349}
 --- !u!4 &529022129
 Transform:
@@ -1542,7 +1548,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11467636, guid: 7973d81b61b491640b7a0d00c9de83d3, type: 3}
   m_PrefabInstance: {fileID: 1929370215}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 418972806}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77624f28614e33247a9ad124a2d27f78, type: 3}
@@ -2406,7 +2412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063813958}
   m_LocalRotation: {x: 0.026353156, y: 0.7270437, z: -0.027949613, w: 0.6855157}
-  m_LocalPosition: {x: -171.84, y: 130.56, z: 50.78}
+  m_LocalPosition: {x: -171.91, y: 129.68, z: 50.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2448,7 +2454,7 @@ Camera:
   far clip plane: 300
   field of view: 60
   orthographic: 1
-  orthographic size: 6.46
+  orthographic size: 7
   m_Depth: 5
   m_CullingMask:
     serializedVersion: 2
