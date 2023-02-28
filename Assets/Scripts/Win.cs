@@ -7,15 +7,25 @@ public class Win : MonoBehaviour
     public GameObject characters;
     public GameObject bed;
     public CharacterMovement character;
+    public ParticleSystem particleEffect;
 
-    
 
     private void OnCollisionEnter(Collision collision)
     {
-       if (collision.gameObject == characters && character.isHoldingToy)
+        if (collision.gameObject == characters && character.isHoldingToy)
         {
             Debug.Log("You win!");
-            // Add any win condition logic you need here
+            FindObjectOfType<AudioManager>().PlaySound("Win");
+
+            if (particleEffect != null) // Check if the particle effect reference is not null
+            {
+                FindObjectOfType<AudioManager>().PlaySound("Collide");
+                // Instantiate the particle effect at the current position and rotation of the wall
+                ParticleSystem effect = Instantiate(particleEffect, transform.position, transform.rotation);
+                // Set the effect to play and destroy itself after it has finished playing
+                effect.Play();
+                Destroy(effect.gameObject, effect.main.duration);
+            }
         }
     }
 }

@@ -19,6 +19,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Start()
     {
+        FindObjectOfType<AudioManager>().PlaySound("MainTheme");
         rb.mass = 0.5f;
         animator = GetComponent<Animator>();
         rb.useGravity = false;

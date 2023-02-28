@@ -13,10 +13,12 @@ public class Wall : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(wallTag))
         {
+            
             connectedWall.SetActive(false);
             gameObject.SetActive(false);
             if (particleEffect != null) // Check if the particle effect reference is not null
             {
+                FindObjectOfType<AudioManager>().PlaySound("Collide");
                 // Instantiate the particle effect at the current position and rotation of the wall
                 ParticleSystem effect = Instantiate(particleEffect, transform.position, transform.rotation);
                 // Set the effect to play and destroy itself after it has finished playing
