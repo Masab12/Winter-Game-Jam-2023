@@ -102,6 +102,7 @@ public class CharacterMovement : MonoBehaviour
             toy.transform.localPosition = Vector3.zero;
         }
     }
+    
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Room")
@@ -111,6 +112,11 @@ public class CharacterMovement : MonoBehaviour
             this.transform.parent = col.transform;
             Debug.Log("Room Change");
 
+        }
+        if (col.gameObject.tag == "Enemy")
+        {
+            animator.SetTrigger("Die");
+            
         }
     }
 }

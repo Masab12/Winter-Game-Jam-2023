@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Win : MonoBehaviour
 {
@@ -28,11 +30,16 @@ public class Win : MonoBehaviour
             characters.gameObject.SetActive(false);
             endScene.SetActive(true);
             Invoke(nameof(ShowCompletePanel), 5f);
+            Invoke("LoadNextScene", 5f);
         }
     }
 
     void ShowCompletePanel()
     {
         // Show Complete Panel
+    }
+    void LoadNextScene()
+    {
+        SceneManager.LoadScene(+1);
     }
 }
