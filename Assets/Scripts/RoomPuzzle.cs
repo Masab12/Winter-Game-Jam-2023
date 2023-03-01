@@ -29,72 +29,75 @@ void Start()
         currentRoom = rooms[0];
         emptySpace = GameObject.Find("EmptySpace").transform;
     }
-
-    void Update()
-    {
-        Joystick.SetActive(true);
-        if (zoomedOutCamera.enabled) // Only allow puzzle to be moved when zoomedOutCamera is enabled
+        void Update()
         {
-            Joystick.SetActive(false);
+            Joystick.SetActive(true);
+            if (zoomedOutCamera.enabled) // Only allow puzzle to be moved when zoomedOutCamera is enabled
+            {
+                Joystick.SetActive(false);
 
-            if (EventSystem.current.IsPointerOverGameObject()) // Check if the mouse pointer is over a UI element
-            {
-                return; // Ignore input if over UI
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                RaycastHit hit;
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+                if (EventSystem.current.IsPointerOverGameObject()) // Check if the mouse pointer is over a UI element
                 {
-                    for (int i = 0; i < rooms.Length; i++)
+                    return; // Ignore input if over UI
+                }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    RaycastHit hit;
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
                     {
-                        if (hit.transform == rooms[i])
+                        for (int i = 0; i < rooms.Length; i++)
                         {
-                            isDragging = true;
-                            dragStartPos = hit.point;
-                            currentRoomOffset = rooms[i].position - dragStartPos;
-                            break;
+                            if (hit.transform == rooms[i])
+                            {
+                                isDragging = true;
+                                dragStartPos = hit.point;
+                                currentRoomOffset = rooms[i].position - dragStartPos;
+                                break;
+                            }
                         }
                     }
                 }
-            }
-            else if (Input.GetMouseButton(0) && isDragging)
-            {
-                Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + currentRoomOffset;
-                Vector3 emptySpacePosition = emptySpace.position;
-                float distanceToEmptySpace = Vector3.Distance(newPosition, emptySpacePosition);
-
-                if (distanceToEmptySpace < 40f)
+                else if (Input.GetMouseButton(0) && isDragging)
                 {
-                    currentRoom.position = newPosition;
-                }
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                isDragging = false;
+                    Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + currentRoomOffset;
+                    Vector3 emptySpacePosition = emptySpace.position;
+                    float distanceToEmptySpace = Vector3.Distance(newPosition, emptySpacePosition);
 
-                bool isSolved = true;
-                for (int i = 0; i < rooms.Length; i++)
-                {
-                    float distanceToEmptySpace = Vector3.Distance(rooms[i].position, emptySpace.position);
                     if (distanceToEmptySpace < 40f)
                     {
-                        Vector3 tempPosition = rooms[i].position;
-                        rooms[i].position = emptySpace.position;
-                        emptySpace.position = tempPosition;
-                    }
-                    if (rooms[i] != emptySpace && rooms[i].position != roomPositions[i].position)
-                    {
-                        isSolved = false;
+                        currentRoom.position = newPosition;
                     }
                 }
-
-                if (isSolved)
+                else if (Input.GetMouseButtonUp(0))
                 {
-                    Debug.Log("Rooms Moving!");
-                    StartCoroutine(ShakeCamera());
+                    isDragging = false;
+
+                    bool isSolved = true;
+                    for (int i = 0; i < rooms.Length; i++)
+                    {
+                        float distanceToEmptySpace = Vector3.Distance(rooms[i].position, emptySpace.position);
+                        if (distanceToEmptySpace < 40f)
+                        {
+                            Vector3 tempPosition = rooms[i].position;
+                            rooms[i].position = emptySpace.position;
+                            emptySpace.position = tempPosition;
+                        }
+                        if (rooms[i] != emptySpace && rooms[i].position != roomPositions[i].position)
+                        {
+                            isSolved = false;
+                        }
+                    }
+
+                    if (isSolved)
+                    {
+                        Debug.Log("Rooms Moving!");
+                        zoomedOutCamera.enabled = true;
+                        StartCoroutine(ShakeCamera());
+                    }
                 }
-                IEnumerator ShakeCamera()
+            }
+        }
+        IEnumerator ShakeCamera()
                 {
                     float duration = 0.5f;
                     float magnitude = 0.2f;
@@ -115,6 +118,5 @@ void Start()
                     }
                 }
             }
-        }
-    }
-}
+        
+   

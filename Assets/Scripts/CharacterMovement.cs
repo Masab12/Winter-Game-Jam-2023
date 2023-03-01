@@ -16,6 +16,7 @@ public class CharacterMovement : MonoBehaviour
     public float fakeGravity = 150f;
     public float airGravityMultiplier = 5f; // The multiplier for fake gravity when in the air
     private bool isInAir = false; // Whether the character is currently in the air
+    public GameObject RoomParent;
 
     void Start()
     {
@@ -71,7 +72,7 @@ public class CharacterMovement : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
 
-        
+
     }
 
     public void Jump()
@@ -105,8 +106,11 @@ public class CharacterMovement : MonoBehaviour
     {
         if (col.gameObject.tag == "Room")
         {
+
+
             this.transform.parent = col.transform;
             Debug.Log("Room Change");
+
         }
     }
 }

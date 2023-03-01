@@ -23,21 +23,18 @@ void Start()
     {
         if (!isZoomedOut)
         {
-            /*if (CharacterMovement.isMoving)
+            if (!isZoomedOut)
             {
                 zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 2f, player.position.z + 1f);
+                defaultPosition = zoomedInCamera.transform.position; // Update defaultPosition
             }
-            else
-            {
-                // Update the position of the camera to follow the new position of the character
-               
-            }*/
-            zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 2f, player.position.z + 1f);
+            //zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 2f, player.position.z + 1f);
         }
     }
 
     public void ToggleZoom()
     {
+        
         if (isZoomedOut)
         {
             zoomedInCamera.enabled = true;
