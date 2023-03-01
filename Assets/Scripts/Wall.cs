@@ -9,12 +9,16 @@ public class Wall : MonoBehaviour
     public ParticleSystem particleEffect;
     public ParticleSystem particleEffect2;// Add a reference to the particle system
 
+    private void Start()
+    {
+        
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag(wallTag))
         {
-            
-            connectedWall.SetActive(false);
+
+            collision.gameObject.SetActive(false);
             gameObject.SetActive(false);
             if (particleEffect != null) // Check if the particle effect reference is not null
             {
@@ -33,6 +37,14 @@ public class Wall : MonoBehaviour
                 effect.Play();
                 Destroy(effect.gameObject, effect.main.duration);
             }
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag(wallTag))
+        {
+            collision.gameObject.SetActive(true);
+            gameObject.SetActive(true);
         }
     }
 }

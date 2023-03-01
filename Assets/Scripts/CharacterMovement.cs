@@ -14,7 +14,7 @@ public class CharacterMovement : MonoBehaviour
     public Transform hand;
     public GameObject toy;
     public float fakeGravity = 150f;
-    public float airGravityMultiplier = 1.2f; // The multiplier for fake gravity when in the air
+    public float airGravityMultiplier = 5f; // The multiplier for fake gravity when in the air
     private bool isInAir = false; // Whether the character is currently in the air
 
     void Start()
@@ -30,11 +30,11 @@ public class CharacterMovement : MonoBehaviour
     {
         if (isInAir)
         {
-            rb.AddForce(-transform.up * fakeGravity * airGravityMultiplier, ForceMode.Acceleration);
+            rb.AddForce(transform.up * fakeGravity * airGravityMultiplier, ForceMode.Acceleration);
         }
         else
         {
-            rb.AddForce(-transform.up * fakeGravity, ForceMode.Acceleration);
+            rb.AddForce(-transform.up * fakeGravity * airGravityMultiplier, ForceMode.Acceleration);
         }
     }
 
@@ -74,14 +74,18 @@ public class CharacterMovement : MonoBehaviour
         
     }
 
-    void Jump()
+    public void Jump()
     {
         animator.SetTrigger("isJumping");
-        rb.AddForce(transform.up, ForceMode.Acceleration);
+        rb.AddForce(transform.up * 50, ForceMode.Acceleration);
         isGrounded = false;
         isInAir = true;
+        Invoke(nameof(Delay), 0.5f);
     }
-
+    void Delay()
+    {
+        isInAir = false;
+    }
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Ground")
@@ -95,6 +99,14 @@ public class CharacterMovement : MonoBehaviour
             toy = other.gameObject;
             toy.transform.parent = hand;
             toy.transform.localPosition = Vector3.zero;
+        }
+    }
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Room")
+        {
+            this.transform.parent = col.transform;
+            Debug.Log("Room Change");
         }
     }
 }

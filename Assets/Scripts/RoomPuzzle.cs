@@ -18,9 +18,10 @@ public class RoomPuzzle : MonoBehaviour
 
     public Camera zoomedOutCamera;
 
-    void Start()
+void Start()
     {
-        rooms = new Transform[3];
+       
+        rooms = new Transform[3]; 
         rooms[0] = GameObject.Find("Room1").transform;
         rooms[1] = GameObject.Find("Room2").transform;
         rooms[2] = GameObject.Find("Room3").transform;

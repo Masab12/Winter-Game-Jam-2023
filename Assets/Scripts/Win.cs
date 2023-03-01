@@ -6,6 +6,7 @@ public class Win : MonoBehaviour
 {
     public GameObject characters;
     public GameObject bed;
+    public GameObject endScene;
     public CharacterMovement character;
     public ParticleSystem particleEffect;
 
@@ -26,6 +27,14 @@ public class Win : MonoBehaviour
                 effect.Play();
                 Destroy(effect.gameObject, effect.main.duration);
             }
+            characters.gameObject.SetActive(false);
+            endScene.SetActive(true);
+            Invoke(nameof(ShowCompletePanel), 5f);
         }
+    }
+
+    void ShowCompletePanel()
+    {
+        // Show Complete Panel
     }
 }

@@ -10,8 +10,9 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 defaultPosition;
     private bool isZoomedOut = false;
+    public GameObject[] allWalls;
 
-    void Start()
+void Start()
     {
         defaultPosition = zoomedInCamera.transform.position;
         zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 2f, player.position.z + 1f);
@@ -42,7 +43,11 @@ public class CameraFollow : MonoBehaviour
             zoomedInCamera.enabled = true;
             zoomedOutCamera.enabled = false;
             zoomedInCamera.transform.position = defaultPosition;
-            isZoomedOut = false;
+            isZoomedOut = false;           
+            for (int i = 0; i < allWalls.Length; i++)
+            {
+                allWalls[i].SetActive(true);
+            }
         }
         else
         {
@@ -50,6 +55,10 @@ public class CameraFollow : MonoBehaviour
             zoomedOutCamera.enabled = true;
             isZoomedOut = true;
             zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 2f, player.position.z + 1f);
+            for (int i = 0; i < allWalls.Length; i++)
+            {
+                allWalls[i].SetActive(true);
+            }
         }
     }
 }
