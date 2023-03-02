@@ -20,8 +20,8 @@ public class RoomPuzzle : MonoBehaviour
 
 void Start()
     {
-       
-        rooms = new Transform[3]; 
+
+        rooms = new Transform[3];
         rooms[0] = GameObject.Find("Room1").transform;
         rooms[1] = GameObject.Find("Room2").transform;
         rooms[2] = GameObject.Find("Room3").transform;
@@ -57,7 +57,7 @@ void Start()
                         }
                     }
                 }
-                else if (Input.GetMouseButton(0) && isDragging)
+                /*else if (Input.GetMouseButton(0) && isDragging)
                 {
                     Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + currentRoomOffset;
                     Vector3 emptySpacePosition = emptySpace.position;
@@ -67,7 +67,7 @@ void Start()
                     {
                         currentRoom.position = newPosition;
                     }
-                }
+                }*/
                 else if (Input.GetMouseButtonUp(0))
                 {
                     isDragging = false;

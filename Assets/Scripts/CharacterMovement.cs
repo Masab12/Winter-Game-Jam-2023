@@ -8,7 +8,7 @@ public class CharacterMovement : MonoBehaviour
     public Rigidbody rb;
     public bool isGrounded = true;
     public Animator animator;
-    public static bool isMoving;
+    public static bool isMoving, isDead;
     public bool isTimeOver = false;
     public bool isHoldingToy = false;
     public Transform hand;
@@ -96,7 +96,7 @@ public class CharacterMovement : MonoBehaviour
         if (other.gameObject.tag == "Toy")
         {
             isHoldingToy = true;
-
+            animator.SetTrigger("pickupTrigger");
             toy = other.gameObject;
             toy.transform.parent = hand;
             toy.transform.localPosition = Vector3.zero;
@@ -108,13 +108,13 @@ public class CharacterMovement : MonoBehaviour
         if (col.gameObject.tag == "Room")
         {
 
-
             this.transform.parent = col.transform;
             Debug.Log("Room Change");
 
         }
         if (col.gameObject.tag == "Enemy")
         {
+            isDead = true;
             animator.SetTrigger("Die");
             
         }

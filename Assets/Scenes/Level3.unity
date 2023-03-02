@@ -1314,6 +1314,7 @@ GameObject:
   - component: {fileID: 196778718}
   - component: {fileID: 196778717}
   - component: {fileID: 196778721}
+  - component: {fileID: 196778722}
   m_Layer: 0
   m_Name: Cube.002
   m_TagString: wall
@@ -1415,6 +1416,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
+--- !u!114 &196778722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196778715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e6621331cccd740b2a9a360b346fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedWall: {fileID: 1580235081}
+  wallTag: wall
+  particleEffect: {fileID: 800417275}
+  particleEffect2: {fileID: 694019418}
 --- !u!1 &201484599
 GameObject:
   m_ObjectHideFlags: 0
@@ -4467,7 +4484,10 @@ MonoBehaviour:
   - {fileID: 1304458250}
   - {fileID: 766822710}
   - {fileID: 1461368827}
-  rooms: []
+  rooms:
+  - {fileID: 3336384780007647909}
+  - {fileID: 1304458250}
+  - {fileID: 766822710}
   emptySpace: {fileID: 1461368827}
   isDragging: 0
   dragStartPos: {x: 0, y: 0, z: 0}
@@ -7398,6 +7418,7 @@ GameObject:
   - component: {fileID: 1124421260}
   - component: {fileID: 1124421259}
   - component: {fileID: 1124421263}
+  - component: {fileID: 1124421264}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -7499,6 +7520,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
+--- !u!114 &1124421264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124421257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e6621331cccd740b2a9a360b346fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedWall: {fileID: 1580235081}
+  wallTag: wall
+  particleEffect: {fileID: 800417275}
+  particleEffect2: {fileID: 694019418}
 --- !u!1 &1138038381
 GameObject:
   m_ObjectHideFlags: 0
@@ -24250,7 +24287,7 @@ MonoBehaviour:
   attackDistance: 2
   moveSpeed: 0.8
   animator: {fileID: 1518434925}
-  detectionDistance: 2
+  detectionDistance: 5
 --- !u!65 &1518434928
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25447,6 +25484,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3336384780007647909}
     m_Modifications:
+    - target: {fileID: 7302528051333136677, guid: c17f983eb640cfc40a0c8e000ae16853, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7558833
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302528051333136677, guid: c17f983eb640cfc40a0c8e000ae16853, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7558833
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302528051333136677, guid: c17f983eb640cfc40a0c8e000ae16853, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7558833
+      objectReference: {fileID: 0}
     - target: {fileID: 7302528051333136701, guid: c17f983eb640cfc40a0c8e000ae16853, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -27335,6 +27384,7 @@ GameObject:
   - component: {fileID: 1982035142}
   - component: {fileID: 1982035141}
   - component: {fileID: 1982035145}
+  - component: {fileID: 1982035146}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: wall
@@ -27436,6 +27486,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
+--- !u!114 &1982035146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982035139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e6621331cccd740b2a9a360b346fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedWall: {fileID: 1580235081}
+  wallTag: wall
+  particleEffect: {fileID: 800417275}
+  particleEffect2: {fileID: 694019418}
 --- !u!1001 &1989151505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31225,7 +31291,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 1.8513716
   m_Direction: 1
-  m_Center: {x: 0.43, y: 0.9104243, z: 0.12}
+  m_Center: {x: 0, y: 0.9104243, z: 0}
 --- !u!4 &5901452233837018817
 Transform:
   m_ObjectHideFlags: 0
@@ -31524,6 +31590,7 @@ GameObject:
   - component: {fileID: 7427214172188265848}
   - component: {fileID: 7427214172188265849}
   - component: {fileID: 7427214172188265850}
+  - component: {fileID: 7427214172188265851}
   m_Layer: 0
   m_Name: Cube.002
   m_TagString: wall
@@ -31917,6 +31984,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
+--- !u!114 &7427214172188265851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704483215623556267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e6621331cccd740b2a9a360b346fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedWall: {fileID: 1580235081}
+  wallTag: wall
+  particleEffect: {fileID: 800417275}
+  particleEffect2: {fileID: 694019418}
 --- !u!1 &7442015437199329485
 GameObject:
   m_ObjectHideFlags: 0

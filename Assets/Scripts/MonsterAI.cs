@@ -55,7 +55,8 @@ public class MonsterAI : MonoBehaviour
         // play the attack animation if the monster is attacking
         if (isAttacking)
         {
-            animator.SetTrigger("Attack");
+            if (CharacterMovement.isDead == false)
+                animator.SetTrigger("Attack");
         }
     }
 }

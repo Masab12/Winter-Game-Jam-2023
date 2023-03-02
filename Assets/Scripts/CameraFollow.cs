@@ -51,7 +51,7 @@ void Start()
             zoomedInCamera.enabled = false;
             zoomedOutCamera.enabled = true;
             isZoomedOut = true;
-            zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 2f, player.position.z + 1f);
+        //    zoomedInCamera.transform.position = new Vector3(transform.position.x, player.position.y + 2f, player.position.z + 1f);
             for (int i = 0; i < allWalls.Length; i++)
             {
                 allWalls[i].SetActive(true);
