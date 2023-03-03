@@ -40,6 +40,6 @@ public class Win : MonoBehaviour
     }
     void LoadNextScene()
     {
-        SceneManager.LoadScene(+1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
