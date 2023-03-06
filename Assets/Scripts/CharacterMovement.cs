@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CharacterMovement : MonoBehaviour
 {
     public float moveSpeed = 2.0f;
@@ -17,6 +17,7 @@ public class CharacterMovement : MonoBehaviour
     public float airGravityMultiplier = 5f; // The multiplier for fake gravity when in the air
     private bool isInAir = false; // Whether the character is currently in the air
     public GameObject RoomParent;
+    public Events events;
 
     void Start()
     {
@@ -41,6 +42,14 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+
+        // Check if the game is paused
+        if (events.isPaused)
+        {
+            rb.velocity = Vector3.zero; // Disable movement
+            joystick.gameObject.SetActive(false); // Disable joystick controls
+            return; // Exit the function
+        }
         float moveX = joystick.Vertical;
         float moveZ = joystick.Horizontal;
 
@@ -116,7 +125,8 @@ public class CharacterMovement : MonoBehaviour
         {
             isDead = true;
             animator.SetTrigger("Die");
-            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
         }
     }
 }

@@ -11,6 +11,8 @@ public class Win : MonoBehaviour
     public GameObject endScene;
     public CharacterMovement character;
     public ParticleSystem particleEffect;
+    public Events events;
+    public GameObject Monster;
 
 
     private void OnCollisionEnter(Collision collision)
@@ -28,18 +30,18 @@ public class Win : MonoBehaviour
                 Destroy(effect.gameObject, effect.main.duration);
             
             characters.gameObject.SetActive(false);
+
             endScene.SetActive(true);
             Invoke(nameof(ShowCompletePanel), 5f);
-            Invoke("LoadNextScene", 5f);
+            Invoke("LoadNextScene", 3f);
         }
     }
 
     void ShowCompletePanel()
     {
-        // Show Complete Panel
+        
+        events.UnhideNextLevel();
+       
     }
-    void LoadNextScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+    
 }
