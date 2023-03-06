@@ -5131,6 +5131,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7232921227154039353, guid: 7f6546f7723e5aa408790f454ab3d01f, type: 3}
   m_PrefabInstance: {fileID: 1194389837}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1194389839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7232921225806704257, guid: 7f6546f7723e5aa408790f454ab3d01f, type: 3}
+  m_PrefabInstance: {fileID: 1194389837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1201963410
 GameObject:
   m_ObjectHideFlags: 0
@@ -7422,6 +7427,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3532375557624324789, guid: 444cc528906836542b75fc444a986de7, type: 3}
+      propertyPath: Pause
+      value: 
+      objectReference: {fileID: 1194389839}
+    - target: {fileID: 3532375557624324789, guid: 444cc528906836542b75fc444a986de7, type: 3}
+      propertyPath: joystick
+      value: 
+      objectReference: {fileID: 1394135481}
+    - target: {fileID: 3532375557624324789, guid: 444cc528906836542b75fc444a986de7, type: 3}
+      propertyPath: NextLevel
+      value: 
+      objectReference: {fileID: 2129964186}
+    - target: {fileID: 3532375557624324789, guid: 444cc528906836542b75fc444a986de7, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 1508541399}
     - target: {fileID: 3532375557624324790, guid: 444cc528906836542b75fc444a986de7, type: 3}
       propertyPath: m_Name
       value: Events
@@ -9776,6 +9797,11 @@ PrefabInstance:
 --- !u!224 &2129964185 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2159062224476674573, guid: c5d6b2befc70db24caf84347f3f012e5, type: 3}
+  m_PrefabInstance: {fileID: 2129964184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2129964186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2159062224717095164, guid: c5d6b2befc70db24caf84347f3f012e5, type: 3}
   m_PrefabInstance: {fileID: 2129964184}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2137909326
