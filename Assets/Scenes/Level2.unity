@@ -27990,7 +27990,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8694962402994988301, guid: 442575ddb5abf834d84a3c08b67f0cf8, type: 3}
+  - {fileID: 2100000, guid: ed4895381226b794d96a4aa042b0a5dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29601,6 +29601,7 @@ MonoBehaviour:
   character: {fileID: 1508541399}
   particleEffect: {fileID: 1412028316}
   events: {fileID: 1547111357}
+  Monster: {fileID: 0}
 --- !u!33 &3469287838529447125
 MeshFilter:
   m_ObjectHideFlags: 0
