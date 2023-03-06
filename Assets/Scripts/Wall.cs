@@ -17,6 +17,7 @@ public class Wall : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(wallTag))
         {
+            FindObjectOfType<AudioManager>().PlaySound("Hit");
 
             collision.gameObject.SetActive(false);
             gameObject.SetActive(false);

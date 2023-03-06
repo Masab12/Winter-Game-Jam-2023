@@ -24739,9 +24739,9 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e2d832396562d7249bdb224ad637c3ab, type: 3}
     source: {fileID: 0}
     isLooped: 1
-  - name: Collide
+  - name: Hit
     volume: 0.8
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 235db7e7f6d982140a4a5ac56629e519, type: 3}
     source: {fileID: 0}
     isLooped: 0
   - name: Win
