@@ -15191,6 +15191,7 @@ MonoBehaviour:
   character: {fileID: 1508541399}
   particleEffect: {fileID: 1843440257}
   events: {fileID: 280871094}
+  Monster: {fileID: 0}
 --- !u!33 &3469287838529447125
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15255,9 +15256,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1982094825}
     - target: {fileID: 3532375557624324789, guid: 444cc528906836542b75fc444a986de7, type: 3}
+      propertyPath: joystick
+      value: 
+      objectReference: {fileID: 1394135481}
+    - target: {fileID: 3532375557624324789, guid: 444cc528906836542b75fc444a986de7, type: 3}
       propertyPath: NextLevel
       value: 
       objectReference: {fileID: 1714705762}
+    - target: {fileID: 3532375557624324789, guid: 444cc528906836542b75fc444a986de7, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 1508541399}
     - target: {fileID: 3532375557624324790, guid: 444cc528906836542b75fc444a986de7, type: 3}
       propertyPath: m_Name
       value: Events
