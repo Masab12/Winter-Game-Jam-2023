@@ -33,7 +33,7 @@ public class Win : MonoBehaviour
 
             endScene.SetActive(true);
             Invoke(nameof(ShowCompletePanel), 5f);
-            Invoke("LoadNextScene", 3f);
+          
         }
     }
 

@@ -26073,7 +26073,7 @@ PrefabInstance:
       objectReference: {fileID: 1547111357}
     - target: {fileID: 318643856093427343, guid: 0142d6d01ffb9254784e834551f26074, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Pausee
+      value: PlayGame
       objectReference: {fileID: 0}
     - target: {fileID: 318643856660391591, guid: 0142d6d01ffb9254784e834551f26074, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

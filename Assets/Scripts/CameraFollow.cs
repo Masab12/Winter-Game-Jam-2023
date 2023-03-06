@@ -37,7 +37,12 @@ void Start()
         
         if (isZoomedOut)
         {
-            zoomedInCamera.enabled = true;
+
+            if (FindObjectOfType<RoomPuzzle>().isDragging)
+            {
+                return;
+                    }
+                zoomedInCamera.enabled = true;
             zoomedOutCamera.enabled = false;
             zoomedInCamera.transform.position = defaultPosition;
             isZoomedOut = false;           

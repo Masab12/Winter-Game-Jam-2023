@@ -18,6 +18,7 @@ public class CharacterMovement : MonoBehaviour
     private bool isInAir = false; // Whether the character is currently in the air
     public GameObject RoomParent;
     public Events events;
+    
 
     void Start()
     {
@@ -125,8 +126,12 @@ public class CharacterMovement : MonoBehaviour
         {
             isDead = true;
             animator.SetTrigger("Die");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+            Invoke(nameof(Restart), 2f);
         }
+    }
+    void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
