@@ -41,14 +41,17 @@ void Start()
             if (FindObjectOfType<RoomPuzzle>().isDragging)
             {
                 return;
-                    }
-                zoomedInCamera.enabled = true;
-            zoomedOutCamera.enabled = false;
-            zoomedInCamera.transform.position = defaultPosition;
-            isZoomedOut = false;           
-            for (int i = 0; i < allWalls.Length; i++)
+            }
+            else
             {
-                allWalls[i].SetActive(true);
+                zoomedInCamera.enabled = true;
+                zoomedOutCamera.enabled = false;
+                zoomedInCamera.transform.position = defaultPosition;
+                isZoomedOut = false;
+                for (int i = 0; i < allWalls.Length; i++)
+                {
+                    allWalls[i].SetActive(true);
+                }
             }
         }
         else
